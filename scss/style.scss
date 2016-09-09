@@ -7,7 +7,8 @@ Author URI:     http://seanockert.com
 Version:        1.0
 */
 
-// Base Config
+/* Import reset and fonts ---------------------- */
+
 @import "reset";
 @import "baseline";
 @import "fonts";
@@ -18,8 +19,17 @@ $color-font: #333;
 $color-light: #666;
 $color-link: #8257FB;
 
-@import "swipe";
+/* Mixin to prepend vendor prefixes ---------------------- */
 
+/* Usage: .element { @include vendor-prefix(transition, 0.2s all ease-out); } */
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+/* Import the swipe slider plugin ---------------------- */
+@import "swipe";
 
 /* Main styles  ---------------------- */
 
@@ -75,6 +85,7 @@ p, figure, li {
 
 
 /* Headers  ---------------------- */
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   margin-bottom: 0;
@@ -122,11 +133,12 @@ footer {
   text-align: center;
   color: $color-light;
   @include type-setting(-1);
-  padding: $base-padding*2 0;
+  padding: $base-padding*4 0;
 }
 
 /* Images ---------------------- */
 
+/* Add the image with this aspect ratio so it won't cause the page to jump when it loads */
 @mixin aspect-ratio($width, $height) {
   position: relative;
   padding-bottom: ($height / $width) * 100%;
@@ -139,7 +151,7 @@ footer {
   }
 }
 
-.img-16x9 {
+.img-16x7 {
   @include aspect-ratio(1600, 700);
 }
 
@@ -176,6 +188,8 @@ figcaption {
 }
 
 
+/* Author and date ---------------------- */
+
 .article-meta {
   color: $color-light;
   @include type-setting(-1);
@@ -192,8 +206,7 @@ figcaption {
   author {
     display: block;
     font-weight: 700;
-  }
-  
+  } 
 }
 
 .article-meta-avatar {
@@ -208,7 +221,7 @@ figcaption {
   display: none;
 }
 
-/* Buttons  ---------------------- */
+/* Buttons for Facebook, Twitter and Comment  ---------------------- */
 
 .article-meta-button {
   color: #888;

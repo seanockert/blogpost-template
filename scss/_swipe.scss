@@ -1,4 +1,4 @@
-﻿/* Swipe 2 required styles */
+﻿/* Swipe 2 required styles ---------------------- */
 
 .swipe {
   overflow: hidden;
@@ -17,11 +17,13 @@
   }
 }
 
-/* END required styles */
-
 #swipe {
   max-width: 100%;
 }
+
+/* END required styles ---------------------- */
+
+/* Swipe 2 navigation ---------------------- */
 
 #prev, 
 #next {
@@ -33,7 +35,9 @@
   color: $color-link;
   height: 30px;
   width: 30px;
-  opacity: 0.3;
+  opacity: 0;
+  padding: 0;
+  @include vendor-prefix(transition, 0.15s all ease-out);
   
   svg {
     height: inherit;
@@ -42,11 +46,11 @@
 }
 
 #prev { left: 0; }
-
 #next { right: 0;}
 
 #swipe-nav {
   text-align: center;
+  line-height: 1;
   
   button {
     text-indent: -9999px;

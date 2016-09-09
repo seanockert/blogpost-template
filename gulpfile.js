@@ -32,7 +32,7 @@ gulp.task('css', function() {
         .pipe(gulp.dest('css'))
         .pipe(uncss({ // Remove unwanted css
           html: ['index.html'], // add all pages that use this stylesheet
-          ignore: [/^\.js/, /^\.mfp/, /^\.minilightbox/, '.open', '.opened', '.closed', '.active', '.hide'] // Don't remove dynamically inserted classes //, /^\.mfp/ - magnific popup
+          ignore: ['/^\.js/','/\.open/', '/\.opened/', '/\.closed/', '/\.active/', '/\.hide/', '/\.hidden/'] // Don't remove dynamically inserted classes //, /^\.mfp/ - magnific popup
         }))
         .pipe(gulp.dest('css'))
         .pipe(uglifycss({ // Minify CSS
