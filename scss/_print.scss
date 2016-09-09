@@ -2,53 +2,41 @@
 
 @media print {
     * {background: transparent !important;color: #000 !important;box-shadow: none !important;text-shadow: none !important;}
-    a, a:visited {text-decoration: underline;font-size:1em;}
-    a[href]:after {content: " (" attr(href) ")";}
+    html {font-size:16px;}
+    a, a:visited {text-decoration: underline;font-size:16px !important}
+    a[href]:after {content: " (" attr(href) ")";font-size: 90%;}
+    article a[href^="#"]:after {content: "";font-size: 90%;}
     abbr[title]:after {content: " (" attr(title) ")";}
-    /* Don't show links for images, or javascript/internal links */
     .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
     pre, blockquote {border:1px solid #999;page-break-inside: avoid;}
     thead {display: table-header-group;}
     tr, img {page-break-inside: avoid;}
     img {max-width: 100% !important;}
+    /* Replace lazy load placeholder with their full image (in case they haven't loaded yet) */
+    img.lazy {content:url("../" attr(data-echo));}
     @page {margin: 1cm;}
+    h1 {line-height:1.4}
     p, h2, h3 {orphans: 3;widows: 3;}
-    h2,h3 {page-break-after: avoid;}
-    article {
-        max-width: 100% !important;
-    }
-    .article-meta-button {
-        display: none;   
-    }
+    h2,h3 {page-break-after: avoid;line-height:1.4}
+    article {max-width: 100% !important;}
+    .article-meta-button, #next, #prev, #swipe-nav {display: none;}
 
-    .swipe {
-        overflow: auto;
-    }
+    .swipe {overflow: auto;}
+    
     .swipe-wrap {
         overflow: auto;
         width: 100% !important;
         max-width: 100% !important;
-        left: 0;
-        margin: 0;
         
         div {
-            float: none;
-            margin: 0 auto;
-            display: block;
-            width: 100%;
-            left: 0;
-            
-            img {
-                width: 100%;
-                margin: 0;
-            }
+            width: 50%;
+            max-width: 50%;
+            left: 0 !important;
+            position: relative !important;
+            @include vendor-prefix(transform,translate(0,0) !important);
         }
     }
 
-    #next, #prev, #swipe-nav {
-        display: none;
-    }
-    
     a.linkback {
         display: block;
         text-decoration: none;
