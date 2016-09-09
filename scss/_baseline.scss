@@ -1,0 +1,109 @@
+
+/* Baseline grid  ---------------------- */
+
+$base-font-size: 1rem;
+$base-line-height: $base-font-size * 1.5;
+
+$type-scale: (
+  -1: 0.85rem,  // small text
+  0: 1.2rem,      // body text
+  1: 1.5rem,  // large text
+  2: 1.8rem,   // secondary heading
+  3: 2.5rem   // main heading
+);
+
+$line-height: (
+  -1: 1.3,
+  0: $base-line-height * 1.2,
+  1: $base-line-height * 1.3,
+  2: $base-line-height * 1.5,
+  3: $base-line-height * 1.8
+);
+
+@function type-scale($level) {
+  @return map-get($type-scale, $level);
+}
+
+@function line-height($level) {
+  @return map-get($line-height, $level);
+}
+
+@mixin type-setting($level: 0) {
+  font-size: type-scale($level);
+  line-height: line-height($level);
+}
+
+
+@mixin baseline-grid($baseline: 24px, $line-color-01: #eee, $line-color-02: transparent) {
+  background: -webkit-repeating-linear-gradient(0deg, $line-color-02, $line-color-02 $baseline, $line-color-01 ($baseline + 1));
+  background: repeating-linear-gradient(0deg, $line-color-02, $line-color-02 $baseline, $line-color-01 ($baseline + 1));
+	background-size: 100% ($baseline + 1);
+}
+
+
+
+
+// unitless function to convert px to em
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1em;
+}
+
+// breakpoint mixin
+@mixin breakpoint($mq01: 0, $mq2: false, $maxmin: max-width) {
+    @if $mq2 == false {
+        @media ($maxmin: $mq01) {
+            @content;
+        }
+    }
+    @else {
+        @media (min-width: $mq01) and (max-width: $mq2) {
+            @content;
+        }
+    }
+}
+
+// responsive font size mixin
+@mixin font-size-map($font-size-map) {
+    @each $breakpoint, $font-size in $font-size-map {
+        @if $breakpoint == null {
+            font-size: em($font-size);
+        } @else {
+            @include breakpoint($breakpoint) {
+                font-size: em($font-size);
+            }
+        }
+    }
+}
+
+// breakpoint variables
+$lg: 1170px;
+$md: 1024px;
+$sm: 640px;
+$xs: 480px;
+
+// body font size
+$browser-context: 16;
+
+// typography scale
+$body-font-size: (null: 16, $md: 15, $sm: 14, $xs: 13);
+$h1-font-size: (null: 72);
+$h2-font-size: (null: 24px);
+
+html {
+    line-height: 1.2;
+    @include font-size-map($body-font-size);
+}
+
+h1 {
+    @include font-size-map($h1-font-size);
+}
+
+h2 {
+    @include font-size-map($h2-font-size);
+}

@@ -1,0 +1,95 @@
+﻿/* Swipe 2 required styles */
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+
+  > div {
+    float:left;
+    width:100%;
+    position: relative;
+    text-align: center;
+  }
+}
+
+/* END required styles */
+
+#swipe {
+  max-width: 100%;
+}
+
+#prev, 
+#next {
+  background: #aaa;
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  background: none;
+  color: $color-link;
+  height: 30px;
+  width: 30px;
+  opacity: 0.3;
+  
+  svg {
+    height: inherit;
+    width: inherit;
+  }
+}
+
+#prev { left: 0; }
+
+#next { right: 0;}
+
+#swipe-nav {
+  text-align: center;
+  
+  button {
+    text-indent: -9999px;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    line-height: 0;
+    font-size: 0;
+    margin: 0 3px;
+    background: #000;
+    display: inline-block;
+    padding: 0;
+    outline: none;
+    opacity: 0.3;
+    
+    &.active {
+    }
+  }
+}
+
+#prev, 
+#next,
+#swipe-nav button {
+  border: none;
+  outline: none;
+  
+  &:hover, &:focus {
+    opacity: 0.5;
+  }
+  
+  &:active {
+    opacity: 0.8;
+  }  
+  
+  &.active {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 40em) {
+  #prev, 
+  #next {
+    margin-top: -25px;
+    height: 50px;
+  }  
+}
