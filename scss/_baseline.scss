@@ -1,5 +1,4 @@
-
-/* Baseline grid  ---------------------- */
+/* Baseline grid ---------------------- */
 
 $base-font-size: 1rem;
 $base-line-height: $base-font-size * 1.5;
@@ -41,9 +40,7 @@ $line-height: (
 }
 
 
-
-
-// unitless function to convert px to em
+// Unitless function to convert px to em
 @function em($pixels, $context: $browser-context) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
@@ -68,7 +65,7 @@ $line-height: (
     }
 }
 
-// responsive font size mixin
+// Responsive font size mixin
 @mixin font-size-map($font-size-map) {
     @each $breakpoint, $font-size in $font-size-map {
         @if $breakpoint == null {
@@ -81,16 +78,16 @@ $line-height: (
     }
 }
 
-// breakpoint variables
+// Breakpoint variables
 $lg: 1170px;
 $md: 1024px;
 $sm: 640px;
 $xs: 480px;
 
-// body font size
+// Body font size
 $browser-context: 16;
 
-// typography scale
+// Typography scale
 $body-font-size: (null: 16, $md: 15, $sm: 14, $xs: 13);
 $h1-font-size: (null: 72);
 $h2-font-size: (null: 24px);

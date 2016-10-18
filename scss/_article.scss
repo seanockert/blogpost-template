@@ -1,0 +1,251 @@
+/* Styling for the article page ---------------------- */
+
+article {
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 0 $base-padding;
+}
+
+footer {
+  text-align: center;
+  color: $color-light;
+  @include type-setting(-1);
+  padding: $base-padding*4 0;
+}
+
+/* Images ---------------------- */
+
+/* Add the image with this aspect ratio so it won't cause the page to jump when it loads */
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  padding-bottom: ($height / $width) * 100%;
+  img, video, iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.img-16x7 {
+  @include aspect-ratio(1600, 700);
+}
+
+figure {
+  text-align: center;
+}
+
+.hero,
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin: 0;
+  margin-left: -50vw;
+  margin-right: -50vw; 
+  background: url(../images/blank-image.svg) no-repeat center center;
+  background-size: 50px 50px;
+}
+
+.hero {
+  background-color: $color-link;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+figcaption {
+  text-align: center;
+  color: #888;
+  @include type-setting(-1);
+}
+
+
+/* Author and date ---------------------- */
+
+.article-meta {
+  color: $color-light;
+  @include type-setting(-1);
+  text-align: left;
+  display: table;
+  margin: 0 auto;
+  
+  img, 
+  span {
+    vertical-align: middle;
+    display: table-cell;
+  }
+  
+  author {
+    display: block;
+    font-weight: 700;
+  } 
+}
+
+.article-meta-avatar {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  float: left;
+  margin-right: $base-padding;
+}
+
+.article-meta-aside {
+  display: none;
+}
+
+/* Buttons for Facebook, Twitter and Comment  ---------------------- */
+
+.article-meta-button {
+  color: #888;
+  border: 1px solid #888;
+  text-decoration: none;
+  padding: $base-padding/1.5 $base-padding;
+  font-size: 0.8em;
+  border-radius: 0.2rem;
+  font-weight: 700;
+  width: 32.5%;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+
+  svg {
+    height: 1em;
+    width: 1em;
+    margin-right: 3px;
+    margin-top: -3px;
+  }
+  
+  span {
+    display: none;
+  }
+
+  &:hover, 
+  &:focus, 
+  &:active {
+    background: #888;
+    color: #fff;
+    
+    .icon {
+      fill: #fff;
+    }
+  }
+  
+  &:active {
+    background: darken(#888, 15%);
+  }
+
+  &.message {
+    border-color: #57AD68;
+    color: #57AD68;
+    
+    &:hover, 
+    &:focus {
+      background: #57AD68;
+      color: #fff;
+    }
+    
+    &:active {
+      background: darken(#57AD68, 15%);
+      border-color: darken(#57AD68, 15%);
+    }
+  }   
+  
+  &.twitter {
+    border-color: #1da1f2;
+    color: #1da1f2;
+    
+    &:hover, 
+    &:focus {
+      background: #1da1f2;
+      color: #fff;
+    }
+    
+    &:active {
+      background: darken(#1da1f2, 15%);
+      border-color: darken(#1da1f2, 15%);
+    }
+  }  
+  
+  &.facebook {
+    border-color: #3b5998;
+    color: #3b5998;
+    
+    svg {
+      margin-top: -5px;
+    }
+    
+    &:hover, 
+    &:focus {
+      background: #3b5998;
+      color: #fff;
+    }
+    
+    &:active {
+      background: darken(#3b5998, 15%);
+      border-color: darken(#3b5998, 15%);
+    }    
+  }
+}
+
+/* Media Queries ---------------------- */
+
+@media (min-width: 40em) {
+
+  html {
+    font-size: $base-font-size*1.2;
+  }
+  
+  menu, ol, ul {
+    padding: 0 0 0 30px
+  }
+    
+  article {
+    padding: 0 $base-padding*2;
+  }
+  
+  h1, 
+  .article-meta {
+    text-align: left;
+  }
+  
+  .article-meta {
+    margin: 0;
+  }
+  
+  .full-width {
+    width: 70vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -35vw;
+    margin-right: -35vw;
+  } 
+  
+  .article-meta-button {
+    font-size: 0.9em;
+    
+    svg {
+      height: 1.2em;
+      width: 1.2em;
+      margin-right: 6px;
+    }
+  
+    span {
+      display: inline-block;
+    }
+    
+    b {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 62em) {
+
+}
