@@ -1,7 +1,7 @@
 /*
 * Compile SCSS to CSS, remove unused CSS styles, minify and concatenate JS, compress HTML and append a version number to CSS and JS includes to bust cache
 * All the final files end up in the /dist directory
-* This will install all plugins (or use package.json): npm install jshint gulp-jshint gulp-concat gulp-uglify gulp-rename gulp-uglifycss gulp-htmlmin gulp-uncss gulp-compass gulp-rev-append --save-dev
+* Run this command to install plugins: npm install jshint gulp-jshint gulp-concat gulp-uglify gulp-rename gulp-uglifycss gulp-htmlmin gulp-uncss gulp-compass gulp-rev-append --save-dev
 */
 
 // Include gulp
@@ -15,44 +15,41 @@ var uglifycss = require('gulp-uglifycss');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var htmlmin = require('gulp-htmlmin');
-var compass = require('gulp-compass'); //alternatively use sass: var sass = require('gulp-sass');
+//var compass = require('gulp-compass'); //alternatively use sass: 
+var sass = require('gulp-sass');
 var rev = require('gulp-rev-append');
 var critical = require('critical');
 
 // Compile Sass, remove unused classes and minify CSS
 gulp.task('css', function() {
-  return gulp.src('scss/**/*.scss')
-  .pipe(compass({ // Compile with Compass
-    config_file: './config.rb',
-    css: 'css',
-    sass: 'scss'
-  }))
-  .on('error', swallowError)
-  .pipe(gulp.dest('css'))
-  .pipe(uncss({ // Remove unwanted css
-    html: ['index.html'], // add all pages that use this stylesheet
-    ignore: ['/^\.js/','/\.open/', '/\.opened/', '/\.closed/', '/\.active/', '/\.hide/', '/\.hidden/'] // Don't remove dynamically inserted classes //, /^\.mfp/ - magnific popup
-  }))
-  .pipe(gulp.dest('css'))
-  .pipe(uglifycss({ // Minify CSS
-    "max-line-len": 80
-  }))
-  .pipe(gulp.dest('dist/css'));
+    return gulp.src('scss/**/*.scss')
+        .pipe(sass(), {outputStyle: ':compact'})
+        .on('error', swallowError)
+        .pipe(gulp.dest('css'))
+        /*.pipe(uncss({ // Remove unwanted css
+          html: ['index.html', 'fruit-ninja/index.html', 'halfbrick/index.html'], // add all pages that use this stylesheet
+          ignore: ['/\.transition-in/', '/\.transition-out/', '/\.fonts-loaded/', '/\.js/'] // Don't remove dynamically inserted classes //, /^\.mfp/ - magnific popup
+        }))
+        .pipe(gulp.dest('css'))*/
+        .pipe(uglifycss({ // Minify CSS
+          "max-line-len": 80
+        }))
+        .pipe(gulp.dest('dist/css'));
 });
 
 // Compress HTML file
 gulp.task('html', function() {
   return gulp.src('index.html')
-  .pipe(htmlmin({
-    collapseWhitespace: true,
-    removeCommentsFromCDATA: true,
-    removeScriptTypeAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-    minifyJS: true,
-    minifyCSS: true
-  }))
-  .pipe(rename('index-compressed.html'))
-  .pipe(gulp.dest('dist'))
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      removeCommentsFromCDATA: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      minifyJS: true,
+      minifyCSS: true
+    }))
+    .pipe(rename('index-compressed.html'))
+    .pipe(gulp.dest('dist'))
 });
 
 // Lint JS
@@ -64,7 +61,7 @@ gulp.task('lint', function() {
 
 // Concatenate & Minify JS
 gulp.task('js', function() {
-  return gulp.src('js/**/*.js')
+  return gulp.src(['js/plugins/*.js', 'js/scripts.js'])
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(rename('scripts.min.js'))
@@ -99,13 +96,13 @@ gulp.task('critical', function (cb) {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-  gulp.watch('scss/**/*.scss', ['css', 'rev', 'critical']);
-  gulp.watch('js/**/*.js', ['js', 'rev']); //'lint',
-  gulp.watch('*.html', ['html']);
+    gulp.watch('scss/**/*.scss', ['css', 'rev']); //, 'critical'
+    gulp.watch('js/**/*.js', ['js', 'rev']); //'lint',
+    gulp.watch('*.html', ['html']);
 });
 
 // Default Task
-gulp.task('default', ['css', 'js', 'rev', 'html', 'critical', 'watch']); //'lint',
+gulp.task('default', ['css', 'js', 'rev', 'html', 'watch']); //'lint', 'critical',
 
 function swallowError (error) {
   console.log(error.toString());

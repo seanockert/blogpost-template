@@ -1,24 +1,24 @@
 {
-  "name": "blogpost-template",
+  "name": "sean-ockert",
   "version": "1.0.1",
-  "description": "A good starting point for responsive blog post layout",
+  "description": "My homepage",
   "main": "index.html",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/seanockert/blogpost-template"
+    "url": ""
   },
   "bugs": {
-    "url": "https://github.com/seanockert/blogpost-template/issues"
+    "url": ""
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sean Ockert",
-  "homepage": "https://seanockert.com/projects/blogpost-template",
+  "homepage": "https://seanockert.com",
   "devDependencies": {
     "critical": "^0.7.0",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-compass": "^2.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-htmlmin": "^1.3.0",

@@ -6,39 +6,39 @@ if ('addEventListener' in document) {
     }, false);
 }
 
-
 // For Swipe touch slider
 // Attach the plugin to the element with id='swipe'
-var elem =      document.getElementById('swipe'),
+var swipeElem =      document.getElementById('swipe'),
     prevBtn =   document.getElementById('prev'),
     nextBtn =   document.getElementById('next'),
-    swipeNav =  document.getElementById('swipe-nav').getElementsByTagName('button');
+    swipeNav =  document.getElementById('swipe-nav').getElementsByTagName('button'),
+    len = swipeNav.length;
 
-window.slider = Swipe(elem, {
+var slider = new Swipe(swipeElem, {
   startSlide: 0,
-  auto: 2000,
+  auto: 12000,
   draggable: true,
   continuous: true,
-  callback: function(index, elem) {
-    for (var i = 0, len = swipeNav.length; i < len; i++) {
+  callback: function(index, swipeElem) {
+    for (var i = 0; i < len; i++) {
       var thisSlide = swipeNav[i];
-      if (thisSlide.getAttribute('data-slide') != index) {
-        swipeNav[i].className = '';
+      if (thisSlide.getAttribute("data-slide") != index) {
+        swipeNav[i].className = "";
       } else {
-        swipeNav[i].className = 'active';
+        swipeNav[i].className = "active";
       }
     }
   }
 });
 
-// Attach previous and next buttons
-prevBtn.onclick = slider.prev;
-nextBtn.onclick = slider.next;
-
 // Add click events to each slide control buttons
-for (var i = 0, len = swipeNav.length; i < len; i++) {
+for (var i = 0; i < len; i++) {
   swipeNav[i].onclick = function() {
-    slider.slide(this.getAttribute('data-slide'));
+    var index = this.getAttribute("data-slide");
+    if (this.getAttribute("class") != "active") {
+      slider.slide(index);
+    }
+    return false;
   };
 }
 
@@ -60,6 +60,8 @@ echo.init({
   }
 });
 
+// Init Medium Zoom
+mediumZoom(document.querySelectorAll('[data-action="zoom"]'));
 
 // Add Flowtype to the 'flowtype' element
 /*var flowtypeElem = document.getElementById('flowtype');

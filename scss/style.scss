@@ -129,6 +129,19 @@ menu, ol, ul {
   padding: 0 0 0 24px
 }
 
+/* Quote  ---------------------- */
+
+blockquote {
+  font-size: 1.5em;
+  line-height: 1.3;
+  color: $color-light;
+  color: $color-link;
+  text-align: center;
+  padding: $base-padding*2 0;
+}
+
+
 @import "article";
+@import "medium-zoom";
 @import "print";
 

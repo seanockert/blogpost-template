@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="dist/css/style.css">
     
     <script>document.createElement('picture');</script>
   </head>
@@ -45,21 +45,21 @@
               <li>Chapter 1: <a href="#chapter-1">Down the Rabbit-Hole</a></li>
               <li>Chapter 2: <a href="#chapter-2">The Pool of Tears</a></li>
               <li>Chapter 3: <a href="#chapter-3">A Caucus-Race and a Long Tale</a></li>
-              <li>Chapter 4: <a href="#chapter-4">The Rabbit Sends in a Little Bill</a></li>
-              <li>Chapter 5: <a href="#chapter-5">Advice from a Caterpillar</a></li>
             </ul>              
               
             <h2 id="chapter-1">Chapter 1: Down the Rabbit Hole</h2>  
             <p>So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.</p>
 
             <figure class="full-width">
-                <img alt="A white rabbit in a hat" src="//placehold.it/800x460/eeeeee/ffffff" data-echo="images/samples/aiw-3.jpg" height='460' width='800' class="lazy">
-                <noscript><img alt="A white rabbit in a hat" src="images/samples/aiw-3.jpg" height='460' width='800'></noscript>
+                <img alt="A white rabbit in a hat" src="//placehold.it/800x460/eeeeee/ffffff" data-echo="images/samples/aiw-3.jpg" height"854" width="711" class="lazy" data-action="zoom">
+                <noscript><img alt="A white rabbit in a hat" src="images/samples/aiw-3.jpg" height"854" width="711"></noscript>
+                <figcaption>An original illustration from Alice’s Adventures in Wonderland, drawn by John Tenniel.</figcaption>
             </figure>
-            <figcaption>An original illustration from Alice’s Adventures in Wonderland, drawn by John Tenniel.</figcaption>
-
+            
             <p>There was nothing so very remarkable in that; nor did Alice think it so very much out of the way to hear the Rabbit say to itself, 'Oh dear! Oh dear! I shall be late!' (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.</p>
             
+            <blockquote class="full-width">Oh, my poor little feet, I wonder who will put on your shoes and stockings for you now, dears?</blockquote>
+
             <p>In another moment down went Alice after it, never once considering how in the world she was to get out again.</p>
 
             <h2 id="chapter-2">Chapter 2: The Pool of Tears</h2>  
@@ -74,15 +74,15 @@
               <div id="swipe" class="swipe">
                 <div class="swipe-wrap">
                   <div>
-                    <img alt="" src="images/samples/aiw-1.jpg">
+                    <img alt="Illustration of Alice helping in the kitchen" src="images/samples/aiw-1.jpg" data-action="zoom">
                     <figcaption>An original illustration from Alice’s Adventures in Wonderland, drawn by John Tenniel.</figcaption>
                   </div>
                   <div>
-                    <img alt="" src="images/samples/aiw-2.jpg">
+                    <img alt="Illustration of Alice at the Mad Hatter's dinner party" src="images/samples/aiw-2.jpg" data-action="zoom">
                     <figcaption>Caption of image 2</figcaption>
                   </div>
                   <div>
-                    <img alt="" src="images/samples/aiw-3.jpg">
+                    <img alt="Illustration of the Mad Hatter" src="images/samples/aiw-3.jpg" data-action="zoom">
                     <figcaption>Caption of image 3</figcaption>
                   </div>
                 </div>
@@ -90,9 +90,9 @@
                 <button id="next"><svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 477.175 477.175" width="512" height="512"><g><path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5 c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z" fill="#000000"/></g></svg></button>
               </div>
               <div id="swipe-nav">
-                <button data-slide="0" class="active">1</button>
-                <button data-slide="1">2</button>
-                <button data-slide="2">3</button>
+                <button data-slide="0" class="active"><span>1</span></button>
+                <button data-slide="1"><span>2</span></button>
+                <button data-slide="2"><span>3</span></button>
               </div>
             </div>
             
@@ -122,14 +122,14 @@
       
     </div> <!-- /Container -->
     
-    <script src="js/plugins/fastclick.min.js"></script>
+    <!--<script src="js/plugins/fastclick.min.js"></script>
     <script src="js/plugins/swipe.min.js"></script>
     <script src="js/plugins/picture-fill.min.js"></script>
     <script src="js/plugins/smooth-scroll.js"></script>
     <script src="js/plugins/echo-lazy-load.js"></script>
-    <script src="js/scripts.js"></script>
-    
-    <script src="js/plugins/fontfaceobserver.js"></script>
+    <script src="js/plugins/medium-zoom.min.js"></script>
+    <script src="js/scripts.js"></script>-->
+    <script src="dist/js/scripts.min.js"></script>
     <script>
     (function(w){
       if (w.document.documentElement.className.indexOf('fonts-loaded') > -1){ return; }
