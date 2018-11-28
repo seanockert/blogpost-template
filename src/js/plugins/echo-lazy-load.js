@@ -1,10 +1,4 @@
-/*
-* Echo
-* Lazy-loading images with data-* attributes 
-* (c) 2015 Todd Motto
-* https://github.com/toddmotto/echo
-*/
-
+/*! echo-js v1.7.3 | (c) 2016 @toddmotto | https://github.com/toddmotto/echo */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(function() {

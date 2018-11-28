@@ -9,7 +9,7 @@
   overflow: hidden;
   position: relative;
 
-  > div {
+  > * {
     float:left;
     width:100%;
     position: relative;
@@ -37,7 +37,7 @@
   width: 30px;
   opacity: 0;
   padding: 0;
-  @include vendor-prefix(transition, 0.15s all ease-out);
+  transition: all 0.15s ease-out;
   
   svg {
     height: inherit;
@@ -53,6 +53,7 @@
   line-height: 1;
   
   button {
+    background: transparent;
     line-height: 0;
     font-size: 0;
     margin: -10px -7px;
@@ -60,6 +61,7 @@
     padding: 10px;
     outline: none;
     opacity: 0.3;
+    -webkit-appearance: none;
     
     span {
       height: 12px;

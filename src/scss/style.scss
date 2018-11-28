@@ -1,0 +1,54 @@
+/*!
+Site Name:      Article Layout
+Site URI:     	http://seanockert.com/projects/basa/components/article
+Description:    Styled on http://blog.iconfinder.com/sketch-review-2016
+Author:         Sean Ockert @seanockert
+Author URI:     http://seanockert.com
+Version:        1.0
+*/
+
+/* Import reset and fonts ---------------------- */
+
+@import "reset";
+@import "variables";
+//@import "baseline";
+@import "typography";
+
+
+/* Main styles  ---------------------- */
+
+html {
+  background: $color-off-white;
+}
+
+body {
+  overflow-x: hidden;
+  color: $color-font;
+  font-size: $base-font-size;
+}
+
+a {
+  color: $color-link;
+  transition: all 0.15s ease-out;
+  
+  &:hover, 
+  &:active {
+    color: darken($color-link, 15%);
+  }
+}
+
+::-moz-selection, 
+::selection {
+  background: $color-link;
+  color: #fff;
+  text-shadow: none;
+}
+
+@import "article";
+
+/* Plugin styles ---------------------- */
+@import "swipe";
+@import "medium-zoom";
+
+@import "print";
+
