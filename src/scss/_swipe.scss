@@ -61,11 +61,12 @@
     padding: 10px;
     outline: none;
     opacity: 0.3;
+    transition: all 0.15s ease-out;
     -webkit-appearance: none;
     
     span {
-      height: 12px;
-      width: 12px;
+      height: 9px;
+      width: 9px;
       text-indent: -9999px;
       display: block;
       background: #000;
@@ -93,6 +94,7 @@
   
   &.active {
     opacity: 1;
+    transform: scale(1.2);
   }
 }
 
