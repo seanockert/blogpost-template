@@ -28,12 +28,19 @@ body {
 }
 
 a {
+  border-radius: 3px;
   color: $color-link;
+  padding: $base-padding;
+  margin: -$base-padding;
   transition: all 0.15s ease-out;
   
   &:hover, 
   &:active {
     color: darken($color-link, 15%);
+  }
+  
+  &:focus {
+    background-color: rgba(0,0,0,0.05);
   }
 }
 
