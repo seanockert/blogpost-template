@@ -1,32 +1,37 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <title>Blogpost Template</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Blogpost Template</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Sean Ockert">
-    <link rel="icon" type="image/png" href="dist/images/favicon.png">
+    <meta name="description" content="Example article: An extract from Alice's Adventures in Wonderland">
+    <meta name="theme-color" content="#8257FB">
 
-    <!-- Load web fonts -->
-    <script>document.createElement('picture');</script>
     <script src="dist/js/fontfaceobserver.min.js"></script>
     <script>
+    // Load web fonts
     (function(w){
       if (w.document.documentElement.className.indexOf('fonts-loaded') > -1){ return; }
       var bodyFont = new FontFaceObserver('Montserrat');
       var headerFont = new FontFaceObserver('Merriweather');
-      Promise.all([bodyFont.load(), headerFont.load()]).then(function () {
-        w.document.documentElement.className += ' fonts-loaded';
-      });
+      if (navigator.connection && (navigator.connection.saveData || (navigator.connection.effectiveType === 'slow-2g' || navigator.connection.effectiveType === '2g'))) {
+      } else {
+        Promise.all([bodyFont.load(), headerFont.load()]).then(function () {
+          w.document.documentElement.className += ' fonts-loaded';
+        });
+      }
     }(this));
+    
+    // Picturefill HTML5 shiv
+    document.createElement('picture');
     </script>
     
     <link rel="stylesheet" href="dist/css/style.min.css">
+    <link rel="icon" type="image/png" href="dist/images/favicon.png">
   </head>
   <body>
-    
     <div class="container">
       <main role="main" id="">
         
@@ -123,11 +128,15 @@
 
         <footer>
           &copy; 1865 Lewis Carroll. All rights reserved.
-          <a href="https://github.com/seanockert/blogpost-template" class="linkback" title="View code on GitHub">Project on GitHub</a>
+          <br><a href="https://github.com/seanockert/blogpost-template" class="linkback" title="View code on GitHub">Project on GitHub</a>
         </footer>    
       </main>
     </div> <!-- /Container -->
     
-    <script src="dist/js/scripts.js"></script>
+    <script src="dist/js/scripts.min.js"></script>
+    <script>
+      // Register the service worker
+      if ('serviceWorker' in navigator) navigator.serviceWorker.register('dist/sw.js')
+    </script>
   </body>
 </html>

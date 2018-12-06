@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for(var i=internal.length; a=internal[--i];){
         a.addEventListener("click", linkHandler, false);
     }
-});
+}, {passive: true});
 
 // return smoothscroll API
 return smoothScroll;

@@ -65,12 +65,3 @@ function initImageZoom() {
   // Init Medium Zoom
   mediumZoom(document.querySelectorAll('[data-action="zoom"]')); 
 }
-
-
-// Add Flowtype to the 'flowtype' element
-/*var flowtypeElem = document.getElementById('flowtype');
-window.flowtype( flowtypeElem, {
-  minFont : 16,
-  maxFont : 48,
-  fontRatio : 36
-});*/

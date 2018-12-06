@@ -66,8 +66,8 @@
       root.addEventListener('scroll', debounceOrThrottle, false);
       root.addEventListener('load', debounceOrThrottle, false);
     } else {
-      root.attachEvent('onscroll', debounceOrThrottle);
-      root.attachEvent('onload', debounceOrThrottle);
+      root.attachEvent('onscroll', debounceOrThrottle, {passive: true});
+      root.attachEvent('onload', debounceOrThrottle, {passive: true});
     }
   };
 
