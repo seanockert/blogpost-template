@@ -6,7 +6,7 @@
 (function() {
 	// Update 'version' if you need to refresh the cache
 	var staticCacheName = 'static';
-	var version = 'v3::';
+	var version = 'v9::';
 
 	// Store core files in a cache (including a page to display when offline)
 	function updateStaticCache() {
@@ -14,9 +14,9 @@
 			return cache.addAll([
 				'/js/scripts.min.js',
 				'/css/style.min.css',
+				'/images/favicon.png',
 				'/images/samples/header-large.jpg',
 				'/images/author-sean.jpg',
-				'/images/favicon.jpg',
 				'/',
 				'/index.html'
 			]);
@@ -96,7 +96,7 @@
 						// If the request is for an image, show an offline placeholder
 						if (request.headers.get('Accept').indexOf('image') !== -1) {
 							return new Response(
-								'<svg width="400" height="300" role="img" aria-labelledby="offline-title" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><title id="offline-title">Offline</title><g fill="none" fill-rule="evenodd"><path fill="rgba(220,220,220,0.6)" d="M0 0h400v300H0z"/><text fill="rgba(136,136,136,1)" font-family="sans-serif" font-size="40"><tspan x="140" y="165">Offline</tspan></text></g></svg>',
+								'<svg width="400" height="300" role="img" aria-labelledby="offline-title" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><title id="offline-title">Offline</title><g fill="none" fill-rule="evenodd"><path fill="rgba(220,220,220,0.6)" d="M0 0h400v300H0z"/><text fill="rgba(136,136,136,1)" font-family="Helvetica,sans-serif" font-size="40"><tspan x="140" y="165">Offline</tspan></text></g></svg>',
 								{ headers: { 'Content-Type': 'image/svg+xml' } }
 							);
 						}

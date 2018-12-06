@@ -9,24 +9,8 @@
     <meta name="description" content="Example article: An extract from Alice's Adventures in Wonderland">
     <meta name="theme-color" content="#8257FB">
 
-    <script src="dist/js/fontfaceobserver.min.js"></script>
-    <script>
-    // Load web fonts
-    (function(w){
-      if (w.document.documentElement.className.indexOf('fonts-loaded') > -1){ return; }
-      var bodyFont = new FontFaceObserver('Montserrat');
-      var headerFont = new FontFaceObserver('Merriweather');
-      if (navigator.connection && (navigator.connection.saveData || (navigator.connection.effectiveType === 'slow-2g' || navigator.connection.effectiveType === '2g'))) {
-      } else {
-        Promise.all([bodyFont.load(), headerFont.load()]).then(function () {
-          w.document.documentElement.className += ' fonts-loaded';
-        });
-      }
-    }(this));
-    
-    // Picturefill HTML5 shiv
-    document.createElement('picture');
-    </script>
+    <script src="dist/js/fontfaceobserver.min.js" defer></script>
+    <script>document.createElement('picture'); // Picturefill HTML5 shiv</script>
     
     <link rel="stylesheet" href="dist/css/style.min.css">
     <link rel="icon" type="image/png" href="dist/images/favicon.png">
@@ -67,7 +51,7 @@
             <p>So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.</p>
 
             <figure class="full-width">
-              <img src="dist/images/blank-image.svg" data-echo="dist/images/samples/aiw-3.jpg" height="854" width="711" alt="A white rabbit in a hat" class="lazy" data-action="zoom">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 854 711'%3E%3C/svg%3E" data-echo="dist/images/samples/aiw-3.jpg" height="854" width="711" alt="A white rabbit in a hat" class="lazy" data-action="zoom">
               <noscript><img alt="A white rabbit in a hat" src="dist/images/samples/aiw-3.jpg" height="854" width="711"></noscript>
               <figcaption>An original illustration from Alice’s Adventures in Wonderland, drawn by John Tenniel.</figcaption>
             </figure>
@@ -90,16 +74,16 @@
               <div id="swipe" class="swipe">
                 <div class="swipe-wrap">
                   <figure>
-                    <img alt="Illustration of Alice helping in the kitchen" src="dist/images/samples/aiw-1.jpg" data-action="zoom">
-                    <figcaption>An original illustration from Alice’s Adventures in Wonderland, drawn by John Tenniel.</figcaption>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 854 711'%3E%3C/svg%3E" data-echo="dist/images/samples/aiw-1.jpg" height="854" width="711" alt="Illustration of Alice helping in the kitchen" class="lazy" data-action="zoom">
+                    <figcaption>Illustration of Alice helping in the kitchen</figcaption>
                   </figure>
                   <figure>
-                    <img alt="Illustration of Alice at the Mad Hatter's dinner party" src="dist/images/samples/aiw-2.jpg" data-action="zoom">
-                    <figcaption>Caption of image 2</figcaption>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 854 711'%3E%3C/svg%3E" data-echo="dist/images/samples/aiw-2.jpg" height="854" width="711" alt="Illustration of Alice at the Mad Hatter's dinner party" class="lazy" data-action="zoom">
+                    <figcaption>Illustration of Alice at the Mad Hatter's dinner party</figcaption>
                   </figure>
                   <figure>
-                    <img alt="Illustration of the Mad Hatter" src="dist/images/samples/aiw-3.jpg" data-action="zoom">
-                    <figcaption>Caption of image 3</figcaption>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 854 711'%3E%3C/svg%3E" data-echo="dist/images/samples/aiw-3.jpg" height="854" width="711" alt="Illustration of the Mad Hatter" class="lazy" data-action="zoom">
+                    <figcaption>Illustration of the Mad Hatter</figcaption>
                   </figure>
                 </div>
                 <button id="prev"><svg viewBox="0 0 477.175 477.175" width="512" height="512"><g><path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225 c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" fill="rgb(0,0,0)"/></svg></button>
@@ -133,10 +117,14 @@
       </main>
     </div> <!-- /Container -->
     
-    <script src="dist/js/scripts.min.js"></script>
+    <script src="dist/js/scripts.min.js" defer></script>
     <script>
       // Register the service worker
-      if ('serviceWorker' in navigator) navigator.serviceWorker.register('dist/sw.js')
-    </script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+           .register('/sw.js')
+           .then(function() { console.log("Service Worker Registered"); });
+      }
+  </script>
   </body>
 </html>
