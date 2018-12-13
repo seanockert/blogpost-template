@@ -120,11 +120,14 @@
     <script src="dist/js/scripts.min.js" defer></script>
     <script>
       // Register the service worker
-      if('serviceWorker' in navigator) {
-        navigator.serviceWorker
-           .register('/sw.js')
-           .then(function() { console.log("Service Worker Registered"); });
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
       }
+
+      window.addEventListener('offline', function() { 
+        console.log('Offline');
+        document.documentElement.classList.add('is-offline'); 
+      });
   </script>
   </body>
 </html>

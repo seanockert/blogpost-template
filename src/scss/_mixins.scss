@@ -1,0 +1,60 @@
+/* Mixins ---------------------- */
+
+
+// Clearfix
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+/* UNUSED */
+/* Use CSS variables with fallback for IE11. Source: https://codepen.io/vank0/pen/kkGvAb
+ * Example: 
+ * Define variable: $variables: ( --font-size: 1rem, ... )
+ * Use in CSS: @include css4 { font-size: var(--font-size); }
+ */
+$css4: true; // true = use CSS variables, false = use only normal CSS
+$compatibility: false; // true = use both the CSS variable and fallback, false = use only CSS variable
+$variables: ();
+
+// Transfer the variables from the map to the :root element
+@if($css4) {
+  :root {
+    @each $variable, $value in $variables {
+      #{$variable}: $value;
+    }
+  }
+}
+
+// This is the "magic" function
+@function var($variable) {
+  @if($css4) {
+    @return unquote('var(' + $variable + ')');
+  } @else {
+    @return map-get($variables, $variable);
+  }
+}
+
+// The mixin temporally sets the $css4 variable to false, compiles the css3 fallback, then makes the variable true again and compiles the css4 code. It should contain properties that use css4 variables, otherwise there will be unnessesary duplication of properties.
+@mixin css4 {
+  @if ($css4) {
+    $css4-backup: $css4;
+    @if($compatibility) {
+      $css4: false !global;
+      @content;
+    }
+    $css4: true !global;
+    @content;
+    $css4: $css4-backup;
+  } 
+  @else {
+    @content;
+  }
+}

@@ -1,8 +1,5 @@
 /* Variables ---------------------- */
-
 $base-padding: 0.75rem;
-$base-font-size: 1rem;
-$base-line-height: 1.5;
 
 $color-font: #333;
 $color-light: #767676;
@@ -19,30 +16,20 @@ $font-size-large: 1.5rem;
 $font-size-xlarge: 2rem;
 $font-size-xxlarge: 3rem;
 
-/* Mixins ---------------------- */
-
-/* Add the image with this aspect ratio so it won't cause the page to jump when it loads */
-@mixin aspect-ratio($width, $height) {
-  padding-bottom: ($height / $width) * 100%;
-  position: relative;
-  
-  img,
-  video,
-  iframe,
-  object,
-  embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-}
-
-.clearfix {
-  &:after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-}
+// For when I change to CSS variables and theme this thing...
+:root {
+  --base-padding: $base-padding,
+  --color-font: $color-font,
+  --color-light: $color-light,
+  --color-off-white: $color-off-white,
+  --color-link: $color-link,
+  --color-green: $color-green,
+  --color-twitter-blue: $color-twitter-blue,
+  --color-facebook-blue: $color-facebook-blue,
+  --font-size-small: $font-size-small,
+  --font-size-base: $font-size-base,
+  --font-size-medium: $font-size-medium,
+  --font-size-large: $font-size-large,
+  --font-size-xlarge: $font-size-xlarge,
+  --font-size-xxlarge: $font-size-xxlarge
+};

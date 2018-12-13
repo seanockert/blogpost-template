@@ -11,7 +11,7 @@ Version:        1.0
 
 @import "reset";
 @import "variables";
-//@import "baseline";
+@import "mixins";
 @import "typography";
 
 
@@ -24,7 +24,7 @@ html {
 body {
   overflow-x: hidden;
   color: $color-font;
-  font-size: $base-font-size;
+  font-size: $font-size-base;
 }
 
 a {
