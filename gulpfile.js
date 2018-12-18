@@ -36,7 +36,7 @@ gulp.task('css', function() {
     .pipe(gulp.dest('dist/css'));
 });
 
-// Compress HTML file
+// Compress HTML file and remove debucsser tool
 gulp.task('html', function() {
   return gulp.src('index.html')
     .pipe(htmlmin({
@@ -48,6 +48,7 @@ gulp.task('html', function() {
       minifyCSS: true
     }))
     .pipe(replace('dist/', ''))
+    .pipe(replace('<script src="src/debucsser.js"></script>', ''))
     .pipe(gulp.dest('dist'))
 });
 

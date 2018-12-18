@@ -12,4 +12,4 @@ Includes a few useful plugins:
 - Swipe: a touch slider for image galleries
 - Echo: lazy load images in as you scroll for faster inital page load
 - Smooth Scroll: scroll anchors smoothly instead of jumping down the page
-- Fastclick: Eliminate the 300ms delay when clicking links on mobile
+- Medium Zoom: lightbox similar to Medium.com
