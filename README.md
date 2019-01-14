@@ -3,7 +3,7 @@
 A good starting point for blog post layout.
 
 
-##Features
+## Features
 
 - Simple, extensible SCSS styling
 - Responsive layout
@@ -17,7 +17,7 @@ Includes a number of best-practices to improve page speed. Running the [demo pag
 
 ![Page performance](https://raw.githubusercontent.com/seanockert/blogpost-template/master/performance.png)
 
-##Plugins
+## Plugins
 
 - Picturefill: a polyfill for loading the correct image based on device size
 - Swipe: a touch slider for image galleries
