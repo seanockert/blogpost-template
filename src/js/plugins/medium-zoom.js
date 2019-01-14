@@ -301,7 +301,7 @@
         active.original.classList.add("medium-zoom-image--hidden");
         active.zoomed.classList.add("medium-zoom-image--opened");
         active.zoomed.addEventListener("click", close);
-        active.zoomed.addEventListener("transitionend", _handleOpenEnd);
+        active.zoomed.addEventListener("transitionend", _handleOpenEnd, {passive: true});
         if (active.original.getAttribute("data-zoom-src")) {
           active.zoomedHd = active.zoomed.cloneNode();
           active.zoomedHd.removeAttribute("srcset");
@@ -382,7 +382,7 @@
             zoom: zoom
           }
         }));
-        active.zoomed.addEventListener("transitionend", _handleCloseEnd);
+        active.zoomed.addEventListener("transitionend", _handleCloseEnd, {passive: true});
       });
     };
     var toggle = function toggle() {
@@ -429,8 +429,8 @@
     var overlay = createOverlay(zoomOptions.background);
     document.addEventListener("click", _handleClick);
     document.addEventListener("keyup", _handleKeyUp);
-    document.addEventListener("scroll", _handleScroll);
-    window.addEventListener("resize", close);
+    document.addEventListener("scroll", _handleScroll, {passive: true});
+    window.addEventListener("resize", close, {passive: true});
     var zoom = {
       open: open,
       close: close,

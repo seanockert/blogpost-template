@@ -36,7 +36,7 @@ gulp.task('css', function() {
     .pipe(gulp.dest('dist/css'));
 });
 
-// Compress HTML file
+// Compress HTML file and remove debucsser tool
 gulp.task('html', function() {
   return gulp.src('index.html')
     .pipe(htmlmin({
@@ -48,6 +48,7 @@ gulp.task('html', function() {
       minifyCSS: true
     }))
     .pipe(replace('dist/', ''))
+    .pipe(replace('<script src="src/debucsser.js"></script>', ''))
     .pipe(gulp.dest('dist'))
 });
 
@@ -79,10 +80,18 @@ gulp.task('rev', function() {
     .pipe(gulp.dest('.'));
 });
 
-// Add revision number to JS and CSS
+// Copy all the images into /dist/images
 gulp.task('copy-images', function() {
   gulp.src('src/images/**')
     .pipe(gulp.dest('dist/images/'));
+});
+
+// Copy the service worker into /dist
+gulp.task('copy-sw', function() {
+  gulp.src('src/sw.js')
+    .pipe(uglify())
+    .on('error', swallowError)
+    .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('critical', function (cb) {
@@ -105,10 +114,11 @@ gulp.task('critical', function (cb) {
 gulp.task('watch', function() {
   gulp.watch('src/scss/**/*.scss', ['css', 'rev', 'critical']); //
   gulp.watch('src/js/**/*.js', ['js', 'js-individual', 'rev']);
+  gulp.watch('src/sw.js', ['copy-sw']);
   gulp.watch('src/images/**', ['copy-images']);
   gulp.watch('*.html', ['html']);
 });
 
 // Default Task
-gulp.task('default', ['css', 'js', 'js-individual', 'copy-images', 'rev', 'html', 'watch']); //, 'critical'
+gulp.task('default', ['css', 'js', 'js-individual', 'copy-sw', 'copy-images', 'rev', 'html', 'watch']); //, 'critical'
 

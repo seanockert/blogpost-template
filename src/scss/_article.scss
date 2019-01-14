@@ -2,7 +2,7 @@
 
 article {
   margin: 0 auto;
-  max-width: 40rem;
+  max-width: 42rem;
   padding: 0 $base-padding;
   width: 100%;
 }
@@ -26,9 +26,7 @@ picture {
 .hero,
 .full-width {
   left: 50%;
-  margin: 0;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin: 0 -50vw 0 -50vw;
   position: relative;
   right: 50%;
   width: 100vw;
@@ -56,16 +54,11 @@ figcaption {
 /* Author and date ---------------------- */
 
 .article-meta {
+  align-items: center;
   color: $color-light;
-  display: table;
+  display: flex;
   font-size: $font-size-small;
   text-align: left;
-
-  img,
-  span {
-    display: table-cell;
-    vertical-align: middle;
-  }
 
   author {
     display: block;
@@ -73,17 +66,13 @@ figcaption {
   }
 }
 
-.article-meta-avatar {
-  border-radius: 50%;
-  float: left;
-  height: 50px;
-  margin-right: $base-padding;
-  width: 50px;
-}
-
-.article-meta-aside {
-  display: none;
-}
+  .article-meta-avatar {
+    border-radius: 50%;
+    float: left;
+    height: $base-padding * 4;
+    margin-right: $base-padding;
+    width: $base-padding * 4;
+  }
 
 /* Buttons for Facebook, Twitter and Comment  ---------------------- */
 
@@ -94,7 +83,7 @@ figcaption {
   display: inline-block;
   font-size: $font-size-small;
   font-weight: 700;
-  margin-right: $base-padding/2;
+  margin: 0 $base-padding/2 $base-padding/2 0;
   padding: $base-padding/1.5 $base-padding;
   text-align: center;
   text-decoration: none;
@@ -102,8 +91,7 @@ figcaption {
 
   svg {
     height: 1em;
-    margin-right: 3px;
-    margin-bottom: -2px;
+    margin: 0 3px -2px 0;
     width: 1em;
   }
 
@@ -183,12 +171,9 @@ figcaption {
   }
 
   .full-width {
-    width: 70vw;
+    margin: 0 -35vw 0 -35vw;
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -35vw;
-    margin-right: -35vw;
+    width: 70vw;
   }
 
   .article-meta-button {
@@ -196,9 +181,9 @@ figcaption {
 
     svg {
       height: 1.2em;
-      width: 1.2em;
       margin-bottom: -4px;
       margin-right: 6px;
+      width: 1.2em;
     }
 
     span {
@@ -209,7 +194,4 @@ figcaption {
       display: none;
     }
   }
-}
-
-@media (min-width: 62em) {
 }
