@@ -94,7 +94,7 @@ gulp.task('copy-sw', function() {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('critical', function (cb) {
+gulp.task('critical', function () {
   critical.generate({
     base: './',
     src: 'index.html',
@@ -112,13 +112,13 @@ gulp.task('critical', function (cb) {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-  gulp.watch('src/scss/**/*.scss', ['css', 'rev', 'critical']); //
-  gulp.watch('src/js/**/*.js', ['js', 'js-individual', 'rev']);
-  gulp.watch('src/sw.js', ['copy-sw']);
-  gulp.watch('src/images/**', ['copy-images']);
-  gulp.watch('*.html', ['html']);
+  gulp.watch('src/scss/**/*.scss', gulp.series(gulp.parallel('css', 'rev', 'critical'))); //
+  gulp.watch('src/js/**/*.js', gulp.series(gulp.parallel('js', 'js-individual', 'rev')));
+  gulp.watch('src/sw.js', gulp.series('copy-sw'));
+  gulp.watch('src/images/**', gulp.series('copy-images'));
+  gulp.watch('*.html', gulp.series('html'));
 });
 
 // Default Task
-gulp.task('default', ['css', 'js', 'js-individual', 'copy-sw', 'copy-images', 'rev', 'html', 'watch']); //, 'critical'
+gulp.task('default', gulp.series(gulp.parallel('css', 'js', 'js-individual', 'copy-sw', 'copy-images', 'rev', 'html', 'watch'))); //, 'critical'
 
